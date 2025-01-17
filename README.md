@@ -1,0 +1,2 @@
+# stampede
+Stamp the document
