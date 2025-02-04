@@ -27,3 +27,6 @@ mock
 
 # .Ds_Store files
 .DS_Store
+
+# Debug files
+__debug_bin*

@@ -53,13 +53,16 @@ export const InputGestureHandler = ({
       <Animated.View style={style}>
         {isEditing ? (
           <TextInput
-            style={{ fontSize, width: fontSize * length }}
+            style={{ fontSize, width: fontSize * length, top: 0, left: 0 }}
             onChangeText={handleTextChange}
             onBlur={handleEndEditing}
             autoFocus
           />
         ) : (
-          <Animated.Text style={{ fontSize }} onPress={handleStartEditing}>
+          <Animated.Text
+            style={{ fontSize, top: 0, left: 0 }}
+            onPress={handleStartEditing}
+          >
             {text.value}
           </Animated.Text>
         )}

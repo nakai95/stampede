@@ -16,6 +16,7 @@ export interface Stamp {
   x: SharedValue<number>;
   y: SharedValue<number>;
   imgSource: DataSourceParam;
+  index: number;
 }
 
 type Stamps = Stamp[];

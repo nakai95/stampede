@@ -4,16 +4,16 @@ import { Canvas, DataSourceParam } from "@shopify/react-native-skia";
 import Stamp from "./Stamp";
 
 type Props = {
-  onSelect: (stamp: DataSourceParam) => void;
+  onSelect: (stamp: DataSourceParam, index: number) => void;
   onCloseModal: () => void;
 };
 
 export default function StampList({ onSelect, onCloseModal }: Props) {
   const [stamps] = useState<DataSourceParam[]>([
-    require("@/assets/images/stamp1.png"),
-    require("@/assets/images/stamp2.png"),
-    require("@/assets/images/stamp3.png"),
-    require("@/assets/images/stamp4.png"),
+    "http://localhost:8080/stamp/0",
+    "http://localhost:8080/stamp/1",
+    "http://localhost:8080/stamp/2",
+    "http://localhost:8080/stamp/3",
   ]);
 
   return (
@@ -22,10 +22,10 @@ export default function StampList({ onSelect, onCloseModal }: Props) {
       showsHorizontalScrollIndicator={Platform.OS === "web"}
       data={stamps}
       contentContainerStyle={styles.listContainer}
-      renderItem={({ item }) => (
+      renderItem={({ item, index }) => (
         <Pressable
           onPress={() => {
-            onSelect(item);
+            onSelect(item, index);
             onCloseModal();
           }}
         >

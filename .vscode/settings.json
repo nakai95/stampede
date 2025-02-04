@@ -1,0 +1,7 @@
+{
+  "cSpell.words": [],
+  "editor.formatOnSave": true,
+  "[go]": {
+    "editor.defaultFormatter": "golang.go"
+  }
+}

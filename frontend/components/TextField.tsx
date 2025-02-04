@@ -16,7 +16,7 @@ export default function ({ fontSize, length, x, y }: Props) {
       y={y}
       width={fontSize * length}
       height={fontSize}
-      r={4}
+      r={2}
       color="silver"
     />
   );

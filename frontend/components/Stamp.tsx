@@ -4,7 +4,6 @@ import {
   Image,
   useImage,
 } from "@shopify/react-native-skia";
-import { useEffect } from "react";
 
 type Props = {
   size: number;
@@ -14,9 +13,6 @@ type Props = {
 };
 
 export default function Stamp({ size, x, y, imgSource }: Props) {
-  useEffect(() => {
-    console.log("[x y]", x, y);
-  }, [x, y]);
   const image = useImage(imgSource);
   if (!image) {
     return null;
