@@ -24,6 +24,7 @@ go.work.sum
 
 # Generated files
 mock
+assets/save
 
 # .Ds_Store files
 .DS_Store
