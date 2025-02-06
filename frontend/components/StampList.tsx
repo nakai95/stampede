@@ -2,6 +2,7 @@ import { useState } from "react";
 import { StyleSheet, FlatList, Platform, Pressable } from "react-native";
 import { Canvas, DataSourceParam } from "@shopify/react-native-skia";
 import Stamp from "./Stamp";
+import { API_BASE_URL } from "@/constant/url";
 
 type Props = {
   onSelect: (stamp: DataSourceParam, index: number) => void;
@@ -10,10 +11,10 @@ type Props = {
 
 export default function StampList({ onSelect, onCloseModal }: Props) {
   const [stamps] = useState<DataSourceParam[]>([
-    "http://localhost:8080/stamp/0",
-    "http://localhost:8080/stamp/1",
-    "http://localhost:8080/stamp/2",
-    "http://localhost:8080/stamp/3",
+    `${API_BASE_URL}/stamp/0`,
+    `${API_BASE_URL}/stamp/1`,
+    `${API_BASE_URL}/stamp/2`,
+    `${API_BASE_URL}/stamp/3`,
   ]);
 
   return (

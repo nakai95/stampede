@@ -18,6 +18,7 @@ import {
 import TextInputField from "@/components/TextField";
 import { useInputContext } from "@/context/input";
 import { InputGestureHandler } from "@/components/InputGestureHandler";
+import { API_BASE_URL } from "@/constant/url";
 
 const { width } = Dimensions.get("window");
 
@@ -56,13 +57,13 @@ export default function Index() {
 
   // createdページに遷移する
   const handleNavigateToCreated = useCallback(() => {
-    const url = "http://localhost:8080/created";
+    const url = `${API_BASE_URL}/created`;
     Linking.openURL(url);
     handleReset();
   }, []);
 
   // GET /image からpng画像を取得
-  const image = useImage("http://localhost:8080/image");
+  const image = useImage(`${API_BASE_URL}/image`);
 
   if (!image) {
     console.log("image not loaded");
@@ -70,7 +71,12 @@ export default function Index() {
   }
 
   const aspectRatio = image.height() / image.width();
-  const imgWidth = width * 0.85;
+  // A4の横サイズ
+  const a4Width = 595.28;
+  let imgWidth = width * 0.85;
+  if (imgWidth > a4Width) {
+    imgWidth = a4Width;
+  }
   const imgHeight = imgWidth * aspectRatio;
 
   const handleSave = async () => {
@@ -78,8 +84,7 @@ export default function Index() {
       Alert.alert("No data to save");
       return;
     }
-    const widthPt = 595.28; // A4の横サイズ
-    const ratio = widthPt / imgWidth;
+    const ratio = a4Width / imgWidth;
 
     const inputsData = inputs.map((input) => ({
       x: input.x.get() * ratio,
@@ -94,7 +99,7 @@ export default function Index() {
       stampIndex: stamp.index,
     }));
 
-    const res = await fetch("http://localhost:8080/edit", {
+    const res = await fetch(`${API_BASE_URL}/edit`, {
       method: "POST",
       headers: {
         "Content-Type": "application/json",
@@ -182,7 +187,6 @@ export default function Index() {
 const styles = StyleSheet.create({
   container: {
     flex: 1,
-    justifyContent: "center",
     alignItems: "center",
     backgroundColor: "#25292e",
     gap: 4,
