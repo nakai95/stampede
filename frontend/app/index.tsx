@@ -7,7 +7,14 @@ import Stamp from "@/components/Stamp";
 import { useStampContext } from "@/context/stamp";
 import { Canvas, DataSourceParam, useImage } from "@shopify/react-native-skia";
 import { useCallback, useMemo, useState } from "react";
-import { Alert, Dimensions, Linking, StyleSheet, View } from "react-native";
+import {
+  Alert,
+  Dimensions,
+  Linking,
+  Platform,
+  StyleSheet,
+  View,
+} from "react-native";
 import TextInputField from "@/components/TextField";
 import { useInputContext } from "@/context/input";
 import { InputGestureHandler } from "@/components/InputGestureHandler";
@@ -49,7 +56,8 @@ export default function Index() {
 
   // createdページに遷移する
   const handleNavigateToCreated = useCallback(() => {
-    Linking.openURL("http://localhost:8080/created");
+    const url = "http://localhost:8080/created";
+    Linking.openURL(url);
     handleReset();
   }, []);
 
@@ -98,11 +106,22 @@ export default function Index() {
     });
 
     if (res.ok) {
-      Alert.alert("Success", "Open the created PDF in your default browser. ", [
-        { text: "OK", onPress: handleNavigateToCreated },
-      ]);
+      if (Platform.OS === "web") {
+        window.alert("Success! Open the created PDF in your default browser.");
+        handleNavigateToCreated();
+      } else {
+        Alert.alert(
+          "Success",
+          "Open the created PDF in your default browser. ",
+          [{ text: "OK", onPress: handleNavigateToCreated }]
+        );
+      }
     } else {
-      Alert.alert("Failed");
+      if (Platform.OS === "web") {
+        window.alert("Failed");
+      } else {
+        Alert.alert("Failed");
+      }
     }
   };
 

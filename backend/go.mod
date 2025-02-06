@@ -3,16 +3,13 @@ module stampede
 go 1.22.4
 
 require (
-	github.com/gen2brain/go-fitz v1.24.14
 	github.com/labstack/echo/v4 v4.13.3
 	github.com/pdfcpu/pdfcpu v0.9.1
 )
 
 require (
-	github.com/ebitengine/purego v0.8.0 // indirect
 	github.com/hhrutter/lzw v1.0.0 // indirect
 	github.com/hhrutter/tiff v1.0.1 // indirect
-	github.com/jupiterrider/ffi v0.2.0 // indirect
 	github.com/labstack/gommon v0.4.2 // indirect
 	github.com/mattn/go-colorable v0.1.13 // indirect
 	github.com/mattn/go-isatty v0.0.20 // indirect
@@ -26,5 +23,6 @@ require (
 	golang.org/x/net v0.33.0 // indirect
 	golang.org/x/sys v0.28.0 // indirect
 	golang.org/x/text v0.21.0 // indirect
+	golang.org/x/time v0.8.0 // indirect
 	gopkg.in/yaml.v2 v2.4.0 // indirect
 )
