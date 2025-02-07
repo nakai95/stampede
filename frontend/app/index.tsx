@@ -15,10 +15,11 @@ import {
   StyleSheet,
   View,
 } from "react-native";
-import TextInputField from "@/components/TextField";
+import TextInputField from "@/components/TextInputField";
 import { useInputContext } from "@/context/input";
 import { InputGestureHandler } from "@/components/InputGestureHandler";
 import { API_BASE_URL } from "@/constant/url";
+import DateStamp from "@/components/DateStamp";
 
 const { width } = Dimensions.get("window");
 

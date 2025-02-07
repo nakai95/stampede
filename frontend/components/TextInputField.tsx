@@ -9,7 +9,7 @@ type Props = {
   y: SharedValue<number>;
 };
 
-export default function ({ fontSize, length, x, y }: Props) {
+export default function TextInputField({ fontSize, length, x, y }: Props) {
   return (
     <RoundedRect
       x={x}
